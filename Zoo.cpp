@@ -28,6 +28,7 @@ void Zoo::startZoo()
 		int num = 0; 
 		std::cout << "You need to buy three types of animals to start the business ";
 		std::cout << "What would you like to buy for animal number " << i + 1 << std::endl;
+		std::cout << "You have $" << moneyInBank << " left in the bank" << std::endl; 
 		std::cout << "Enter 1 for a tiger \n"; 
 		std::cout << "Enter 2 for a penguin \n"; 
 		std::cout << "Enter 3 for a turtle \n"; 
@@ -66,6 +67,8 @@ void Zoo::addTiger(Tiger *pt, Tiger ti)
 {
 	
 	pt[0] = ti; 
+	int cost = moneyInBank - ti.getCost(); 
+	setMoneyInBank(cost); 
 	
 }
 
@@ -73,6 +76,8 @@ void Zoo::addPenguin(Penguin *pt, Penguin p)
 {
 	
 	pt[0] = p; 
+	int cost = moneyInBank - p.getCost();
+	setMoneyInBank(cost);
 
 }
 
@@ -81,6 +86,8 @@ void Zoo::addTurtle(Turtle *pt, Turtle tu)
 {
 	
 	pt[0] = tu;
+	int cost = moneyInBank - tu.getCost();
+	setMoneyInBank(cost);
 
 }
 

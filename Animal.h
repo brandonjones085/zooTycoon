@@ -13,7 +13,7 @@ protected:
 
 public:
 	Animal();
-	Animal(int a, int c, int nOB, int bFC, int p); 
+	Animal(int a, int c, int nOB, int bFC, int p, int mib); 
 	void setAge(int); 
 	int getAge(); 
 	void setCost(int);

@@ -5,7 +5,7 @@
 
 
 
-class Zoo
+class Zoo : public Animal
 {
 private:
 	Penguin *penguinArray;

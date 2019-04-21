@@ -3,7 +3,8 @@
 
 class Tiger : public Animal
 {
-private: 
+protected: 
+	
 	
 
 

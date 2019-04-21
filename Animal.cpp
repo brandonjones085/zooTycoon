@@ -10,16 +10,18 @@ Animal::Animal()
 	this->numOfBabies = 0; 
 	this->baseFoodCost = 0; 
 	this->payoff = 0; 
+	this->moneyInBank = 100000; 
 
 }
 
-Animal::Animal(int a, int c, int nOB, int bFC, int p)
+Animal::Animal(int a, int c, int nOB, int bFC, int p, int mib)
 {
 	this->age = a; 
 	this->cost = c; 
 	this->numOfBabies = nOB; 
 	this->baseFoodCost = bFC; 
 	this->payoff = p; 
+	this->moneyInBank = mib; 
 }
 
 void Animal::setAge(int age)
@@ -76,7 +78,7 @@ int Animal::getBaseFoodCost()
 
 void Animal::setMoneyInBank(int mib)
 {
-	moneyInBank = mib; 
+	this->moneyInBank = mib; 
 }
 
 int Animal::getMoneyInBank()
