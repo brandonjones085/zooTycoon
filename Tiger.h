@@ -11,7 +11,7 @@ protected:
 public:
 	Tiger(); 
 	
-	void subtractTigerCost(); 
+	
 	~Tiger();
 };
 

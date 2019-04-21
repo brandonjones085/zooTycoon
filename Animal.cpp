@@ -5,24 +5,24 @@
 
 Animal::Animal()
 {
-	this->age = 0; 
+	this->age = 1; 
 	this->cost = 0; 
 	this->numOfBabies = 0; 
 	this->baseFoodCost = 0; 
 	this->payoff = 0; 
-	this->moneyInBank = 100000; 
+	
 
 }
 
 Animal::Animal(int a, int c, int nOB, int bFC, int p, int mib)
 {
-	this->age = a; 
-	this->cost = c; 
-	this->numOfBabies = nOB; 
-	this->baseFoodCost = bFC; 
-	this->payoff = p; 
-	this->moneyInBank = mib; 
+	this->age = a;
+	this->cost = c;
+	this->numOfBabies = nOB;
+	this->baseFoodCost = bFC;
+	this->payoff = p;
 }
+	
 
 void Animal::setAge(int age)
 {
@@ -76,15 +76,7 @@ int Animal::getBaseFoodCost()
 	return baseFoodCost; 
 }
 
-void Animal::setMoneyInBank(int mib)
-{
-	this->moneyInBank = mib; 
-}
 
-int Animal::getMoneyInBank()
-{
-	return moneyInBank;
-}
 
 void Animal::isAdult(int a)
 {

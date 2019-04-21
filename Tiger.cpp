@@ -10,10 +10,7 @@ Tiger::Tiger()
 	this->payoff = 0.2; 
 }
 
-void Tiger::subtractTigerCost()
-{
-	moneyInBank -= cost; 
-}
+
 
 
 

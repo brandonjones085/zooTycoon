@@ -16,20 +16,22 @@ int main()
 
 
 	Animal a; 
-	a.setMoneyInBank(100000); 
+	
 
-	int moneyLeft = a.getMoneyInBank(); 
+	
 
 	a.setBaseFoodCost();
+
 	Zoo z; 
 	
+	z.startZoo();
 
 	while (again == 1)
 	{
-		z.startZoo(); 
+		
 
 		std::cout << "Day number: " << days << std::endl; 
-		std::cout << "Money left in the bank: " << moneyLeft << std::endl; 
+		
 	
 
 

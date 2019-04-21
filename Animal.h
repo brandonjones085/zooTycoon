@@ -3,7 +3,7 @@ class Animal
 {
 
 protected: 
-	int moneyInBank; 
+	
 	int age; 
 	int cost; 
 	int numOfBabies; 
@@ -24,8 +24,7 @@ public:
 	double getPayoff(); 
 	void setBaseFoodCost(); 
 	int getBaseFoodCost(); 
-	void setMoneyInBank(int); 
-	int getMoneyInBank(); 
+ 
 	void isAdult(int); 
 
 

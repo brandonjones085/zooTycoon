@@ -5,9 +5,14 @@
 
 
 
-class Zoo : public Animal
+class Zoo
 {
 private:
+	int days; 
+	int moneyInBank; 
+	int numOfPenguin; 
+	int numOfTiger; 
+	int numOfTurtle; 
 	Penguin *penguinArray;
 	Tiger *tigerArray;
 	Turtle *turtleArray;
@@ -16,10 +21,18 @@ private:
 public:
 	Zoo(); 
 	
+	
 	void startZoo(); 
-	void addTiger(Tiger *pt, Tiger ti ); 
-	void addPenguin(Penguin *pt, Penguin p); 
-	void addTurtle(Turtle *pt, Turtle tu); 
+	void addTiger(); 
+	int getNumOfTiger(); 
+	void subtractTigerCost(); 
+	void addPenguin(); 
+	int getNumOfPenguin(); 
+	void subtractPenguinCost(); 
+	void addTurtle(); 
+	int getNumOfTurtle(); 
+	void subtractTurtleCost(); 
+	
 
 
 
