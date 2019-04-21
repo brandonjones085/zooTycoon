@@ -23,7 +23,7 @@ public:
 	void setPayoff(int); 
 	double getPayoff(); 
 	void setBaseFoodCost(); 
-	int getBaseFoodCost(); 
+	double getBaseFoodCost(); 
  
 	void isAdult(int); 
 

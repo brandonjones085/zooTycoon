@@ -9,10 +9,9 @@ Tiger::Tiger()
 	this->payoff = 0.2; 
 }
 
-
-int Tiger::tigerBaseFoodCost()
+double Tiger::tigerBaseFoodCost()
 {
-	int base = getBaseFoodCost(); 
+	double base = getBaseFoodCost(); 
 
 	return base * 5; 
 }

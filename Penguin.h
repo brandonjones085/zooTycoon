@@ -5,7 +5,7 @@ class Penguin : public Animal
 {
 public:
 	Penguin();
-	int penguinFoodCost(); 
+	double penguinFoodCost(); 
 	~Penguin();
 };
 

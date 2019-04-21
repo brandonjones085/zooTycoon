@@ -12,9 +12,9 @@ Penguin::Penguin()
 }
 
 
-int Penguin::penguinFoodCost()
+double Penguin::penguinFoodCost()
 {
-	int base = getBaseFoodCost();
+	double base = getBaseFoodCost();
 
 	return base;
 }

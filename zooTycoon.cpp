@@ -45,7 +45,7 @@ int main()
 		z.subtractTotalFoodCost(); 
 		z.payoffForDay(); 
 		
-
+		z.buyAnotherAnimal(); 
 
 		//Asks user if they'd like to continue
 		std::cout << "Enter 1 to continue playing or 2 to quit: "; 

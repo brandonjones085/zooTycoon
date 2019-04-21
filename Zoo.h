@@ -9,7 +9,7 @@ class Zoo : public Animal
 {
 private:
 	int days; 
-	int moneyInBank; 
+	double moneyInBank; 
 	int numOfPenguin; 
 	int numOfTiger; 
 	int numOfTurtle; 
@@ -36,11 +36,14 @@ public:
 	void subtractTurtleCost(); 
 	void showTurtles(); 
 	double getMoneyInBank(); 
-	void setMoneyInBank(int); 
+	void setMoneyInBank(double); 
 	void addDay(); 
 	void subtractTotalFoodCost(); 
 	void payoffForDay(); 
-
+	void buyAnotherAnimal(); 
+	void addAdultTurtle(); 
+	void addAdultTiger(); 
+	void addAdultPenguin(); 
 
 	~Zoo();
 };

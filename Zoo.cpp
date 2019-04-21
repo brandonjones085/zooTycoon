@@ -26,7 +26,7 @@ double Zoo::getMoneyInBank()
 }
 
 
-void Zoo::setMoneyInBank(int in)
+void Zoo::setMoneyInBank(double in)
 {
 	moneyInBank = in; 
 }
@@ -271,8 +271,6 @@ void Zoo::showTurtles()
 void Zoo::addDay()
 {
 	
-
-
 	for (int i = 0; i < numOfTiger; i++)
 	{
 		
@@ -291,8 +289,8 @@ void Zoo::addDay()
 void Zoo::subtractTotalFoodCost()
 {
 
-	int tigerCost = ((getBaseFoodCost() * 5) * numOfTiger); 
-	int penguinCost = (getBaseFoodCost()) * numOfPenguin;
+	double tigerCost = ((getBaseFoodCost() * 5) * numOfTiger); 
+	double penguinCost = (getBaseFoodCost()) * numOfPenguin;
 	double turtleCost = (getBaseFoodCost() * 0.5) * numOfTurtle;
 
 	std::cout << "Tiger Food cost " << tigerCost << std::endl; 
@@ -319,8 +317,8 @@ void Zoo::payoffForDay()
 	Turtle tu; 
 
 	double tigerPayout = (ti.getCost() * 0.2) * numOfTiger; 
-	double penguinPayout = (ti.getCost() * 0.2) * numOfTiger;
-	double turtlePayout = (ti.getCost() * 0.2) * numOfTiger;
+	double penguinPayout = (p.getCost() * 0.1) * numOfPenguin;
+	double turtlePayout = (tu.getCost() * 0.05) * numOfTurtle;
 
 	std::cout << "Tiger payout: " << tigerPayout << std::endl; 
 	std::cout << "Penguin payout: " << penguinPayout << std::endl;
@@ -330,6 +328,125 @@ void Zoo::payoffForDay()
 
 	setMoneyInBank(totalPayout); 
 	
+}
+
+
+void Zoo::buyAnotherAnimal()
+{
+	char choice = ' '; 
+	int animal = 0; 
+
+
+	std::cout << "Would you like to by an adult animal? y/n \n"; 
+	std::cin >> choice; 
+	if (choice == 'y')
+	{
+		std::cout << "Enter 1 for a Tiger\n"; 
+		std::cout << "Enter 2 for a Penguin\n";
+		std::cout << "Enter 3 for a Turtle\n"; 
+		std::cin >> animal; 
+
+		if (animal == 1)//buy a tiger
+		{
+			//addAdultTiger(); 
+		}
+		else if (animal == 2)//buy a penguin
+		{
+			//addAdultPenguin(); 
+		}
+		else if (animal == 3)//but a turtle
+		{
+			addAdultTurtle(); 
+		}
+		
+
+	}
+	
+}
+
+
+void Zoo::addAdultTiger() 
+{
+
+	int i = getNumOfTiger();
+	Tiger *t = new Tiger[i];
+
+	for (int j = 0; j < i; j++)
+	{
+		t[j] = tigerArray[j];
+	}
+
+
+	numOfTiger++;
+	delete[] tigerArray;
+
+
+	tigerArray = new Tiger[numOfTiger];
+
+	tigerArray[numOfTiger - 1].setAge(3); //Sets the age of the animal to 3 days old
+
+
+	for (int i = 0; i < numOfTiger - 1; i++)
+	{
+		tigerArray[i].setAge(t[i].getAge());
+	}
+
+}
+
+void Zoo::addAdultPenguin()
+{
+	int i = getNumOfPenguin();
+	Penguin *p = new Penguin[i];
+
+	for (int j = 0; j < i; j++)
+	{
+		p[j] = penguinArray[j];
+	}
+
+
+	numOfPenguin++;
+	delete[] penguinArray;
+
+
+	penguinArray = new Penguin[numOfPenguin];
+
+	penguinArray[numOfPenguin - 1].setAge(3); //Sets the age of the animal to 3 days old
+
+
+	for (int i = 0; i < numOfPenguin - 1; i++)
+	{
+		penguinArray[i].setAge(p[i].getAge());
+
+	}
+}
+
+
+void Zoo::addAdultTurtle()
+{
+	int i = getNumOfTurtle();
+	Turtle *t = new Turtle[i];
+
+	for (int j = 0; j < i; j++)
+	{
+		t[j] = turtleArray[j];
+	}
+
+
+	numOfTurtle++;
+	delete[] turtleArray;
+
+
+	turtleArray = new Turtle[numOfTurtle];
+
+	turtleArray[numOfTurtle -1].setAge(3); //Sets the age of the animal to 3 days old
+	
+
+	for (int i = 0; i < numOfTurtle - 1; i++)
+	{
+		turtleArray[i].setAge(t[i].getAge());
+		
+	}
+
 }
 
 

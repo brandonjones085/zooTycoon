@@ -8,7 +8,7 @@ protected:
 
 public:
 	Tiger(); 
-	int tigerBaseFoodCost();
+	double tigerBaseFoodCost();
 	
 	
 	~Tiger();

@@ -15,7 +15,7 @@ Turtle::Turtle()
 
 double Turtle::turtleFoodCost()
 {
-	int base = getBaseFoodCost();
+	double base = getBaseFoodCost();
 
 	return base * 0.5;
 }

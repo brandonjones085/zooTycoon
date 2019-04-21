@@ -61,20 +61,13 @@ void Animal::setBaseFoodCost()
 	std::cin >> baseFoodCost; 
 }
 
-int Animal::getBaseFoodCost()
+double Animal::getBaseFoodCost()
 {
 	return baseFoodCost; 
 }
 
 
 
-void Animal::isAdult(int a)
-{
-	if (a < 3)
-	{
-
-	}
-}
 
 Animal::~Animal()
 {
