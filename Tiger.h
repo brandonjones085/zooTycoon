@@ -9,7 +9,8 @@ private:
 
 public:
 	Tiger(); 
-	Tiger(int, int, int, int, int);
+	
+	void subtractTigerCost(); 
 	~Tiger();
 };
 

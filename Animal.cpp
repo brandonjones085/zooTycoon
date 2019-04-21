@@ -74,9 +74,9 @@ int Animal::getBaseFoodCost()
 	return baseFoodCost; 
 }
 
-void Animal::setMoneyInBank(int mob)
+void Animal::setMoneyInBank(int mib)
 {
-	this->moneyInBank = mob; 
+	moneyInBank = mib; 
 }
 
 int Animal::getMoneyInBank()

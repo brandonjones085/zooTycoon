@@ -1,7 +1,6 @@
 #include "Tiger.h"
 
 
-
 Tiger::Tiger()
 {
 	this->age = 1; 
@@ -10,6 +9,14 @@ Tiger::Tiger()
 	this->baseFoodCost = 10; 
 	this->payoff = 0.2; 
 }
+
+void Tiger::subtractTigerCost()
+{
+	moneyInBank -= cost; 
+}
+
+
+
 
 
 Tiger::~Tiger()
