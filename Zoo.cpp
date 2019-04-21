@@ -68,22 +68,39 @@ void Zoo::startZoo()
 			if (choice == 1)
 			{
 				addPenguin();
+				subtractPenguinCost(); 
 			}
 			else
 			{
 				for (int i = 0; i < choice; i++)
 				{
 					addPenguin();
+					subtractPenguinCost();
 				}
 			}
 
 		
 		}
-		else if (num == 3)
+		else if (num == 3)//Adds turtle
 		{
-			//add a turtle
-			 
-			addTurtle(); 
+			int choice;
+			std::cout << "How many would you like to buy? 1 or 2? \n";
+			std::cin >> choice;
+			if (choice == 1)
+			{
+				addTurtle();
+				subtractTurtleCost();
+			}
+			else
+			{
+				for (int i = 0; i < choice; i++)
+				{
+					addTurtle();
+					subtractTurtleCost();
+				}
+			}
+			
+			
 		}
 
 	}
@@ -141,7 +158,7 @@ void Zoo::addPenguin()
 	}
 
 	numOfPenguin++; 
-	delete[] p; 
+	delete[] penguinArray; 
 
 	penguinArray = new Penguin[i]; 
 
@@ -170,7 +187,7 @@ void Zoo::addTurtle()
 		t[j] = turtleArray[j]; 
 	}
 	numOfTurtle++; 
-	delete[] t; 
+	delete[] turtleArray; 
 
 	turtleArray = new Turtle[i]; 
 
