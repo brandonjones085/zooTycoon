@@ -5,11 +5,10 @@ class Tiger : public Animal
 {
 protected: 
 	
-	
-
 
 public:
 	Tiger(); 
+	int tigerBaseFoodCost();
 	
 	
 	~Tiger();

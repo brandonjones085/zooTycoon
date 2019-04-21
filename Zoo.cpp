@@ -20,6 +20,16 @@ Zoo::Zoo()
 
 }
 
+double Zoo::getMoneyInBank()
+{
+	return moneyInBank; 
+}
+
+
+void Zoo::setMoneyInBank(int in)
+{
+	moneyInBank = in; 
+}
 
 void Zoo::startZoo()
 {
@@ -48,6 +58,7 @@ void Zoo::startZoo()
 				//add a tiger
 				addTiger();
 				subtractTigerCost(); 
+				
 			}
 			else
 			{
@@ -56,6 +67,7 @@ void Zoo::startZoo()
 				{
 					addTiger(); 
 					subtractTigerCost();
+				
 				}
 			}
 				
@@ -69,6 +81,7 @@ void Zoo::startZoo()
 			{
 				addPenguin();
 				subtractPenguinCost(); 
+				
 			}
 			else
 			{
@@ -76,6 +89,7 @@ void Zoo::startZoo()
 				{
 					addPenguin();
 					subtractPenguinCost();
+					
 				}
 			}
 
@@ -90,6 +104,7 @@ void Zoo::startZoo()
 			{
 				addTurtle();
 				subtractTurtleCost();
+				
 			}
 			else
 			{
@@ -97,20 +112,15 @@ void Zoo::startZoo()
 				{
 					addTurtle();
 					subtractTurtleCost();
+					
 				}
 			}
-			
-			
+				
 		}
 
 	}
 
-	
-
 }
-
-
-
 
 
 void Zoo::addTiger()
@@ -125,12 +135,18 @@ void Zoo::addTiger()
 	for (int j = 0; j < i; j++)
 	{
 		t[j] = tigerArray[j]; 
+			
 	}
 
 	numOfTiger++; 
 	delete[] tigerArray; 
 
-	tigerArray = new Tiger[i]; 
+	tigerArray = new Tiger[numOfTiger]; 
+
+	for (int i = 0; i < numOfTiger -1; i++)
+	{
+		tigerArray[i].setAge(t[i].getAge()); 
+	}
 
 }
 
@@ -147,6 +163,17 @@ void Zoo::subtractTigerCost()
 }
 
 
+void Zoo::showTigers()
+{
+	for (int i = 0; i < numOfTiger; i++)
+	{
+		std::cout << "Tiger number " << i +1 << std::endl; 
+		std::cout << "Days old: " << (tigerArray[i]).getAge() << std::endl;
+
+	}
+	std::cout << std::endl;
+}
+
 void Zoo::addPenguin()
 {
 	int i = getNumOfPenguin(); 
@@ -160,7 +187,12 @@ void Zoo::addPenguin()
 	numOfPenguin++; 
 	delete[] penguinArray; 
 
-	penguinArray = new Penguin[i]; 
+	penguinArray = new Penguin[numOfPenguin]; 
+
+	for (int i = 0; i < numOfPenguin-1; i++)
+	{
+		penguinArray[i].setAge(p[i].getAge());
+	}
 
 }
 
@@ -176,6 +208,17 @@ void Zoo::subtractPenguinCost()
 	moneyInBank -= p.getCost();
 }
 
+void Zoo::showPenguins()
+{
+	for (int i = 0; i < numOfPenguin; i++)
+	{
+		std::cout << "Penguin number " << i + 1 << std::endl;
+		std::cout << "Days old: " << (penguinArray[i]).getAge() << std::endl;
+		
+	}
+	std::cout << std::endl;
+}
+
 
 void Zoo::addTurtle()
 {
@@ -186,10 +229,19 @@ void Zoo::addTurtle()
 	{
 		t[j] = turtleArray[j]; 
 	}
+
+
 	numOfTurtle++; 
 	delete[] turtleArray; 
 
-	turtleArray = new Turtle[i]; 
+
+	turtleArray = new Turtle[numOfTurtle]; 
+
+
+	for (int i = 0; i < numOfTurtle -1; i++)
+	{
+		turtleArray[i].setAge(t[i].getAge()); 	
+	}
 
 
 }
@@ -206,6 +258,79 @@ void Zoo::subtractTurtleCost()
 	moneyInBank -= tu.getCost();
 }
 
+void Zoo::showTurtles()
+{
+	for (int i = 0; i < numOfTurtle; i++)
+	{
+		std::cout << "Turtle number " << i +1<< std::endl;
+		std::cout << "Days old: " << (turtleArray[i]).getAge() << std::endl;
+	}
+	std::cout << std::endl;
+}
+
+void Zoo::addDay()
+{
+	
+
+
+	for (int i = 0; i < numOfTiger; i++)
+	{
+		
+		tigerArray[i].setAge(tigerArray[i].getAge()+1); 
+	}
+	for (int i = 0; i < numOfPenguin; i++)
+	{
+		penguinArray[i].setAge(penguinArray[i].getAge()+1); 
+	}
+	for (int i = 0; i < numOfTurtle; i++)
+	{
+		turtleArray[i].setAge(turtleArray[i].getAge() + 1);
+	}
+}
+
+void Zoo::subtractTotalFoodCost()
+{
+
+	int tigerCost = ((getBaseFoodCost() * 5) * numOfTiger); 
+	int penguinCost = (getBaseFoodCost()) * numOfPenguin;
+	double turtleCost = (getBaseFoodCost() * 0.5) * numOfTurtle;
+
+	std::cout << "Tiger Food cost " << tigerCost << std::endl; 
+	std::cout << "Penguin Food cost " << penguinCost << std::endl;
+	std::cout << "Turtle Food cost " << turtleCost << std::endl;
+
+
+	double foodTotal = tigerCost + penguinCost + turtleCost; 
+	double oldTotal = getMoneyInBank(); 
+
+	double newTotal = oldTotal - foodTotal; 
+
+	setMoneyInBank(newTotal); 
+
+	std::cout << std::endl; 
+}
+
+
+
+void Zoo::payoffForDay()
+{
+	Tiger ti; 
+	Penguin p; 
+	Turtle tu; 
+
+	double tigerPayout = (ti.getCost() * 0.2) * numOfTiger; 
+	double penguinPayout = (ti.getCost() * 0.2) * numOfTiger;
+	double turtlePayout = (ti.getCost() * 0.2) * numOfTiger;
+
+	std::cout << "Tiger payout: " << tigerPayout << std::endl; 
+	std::cout << "Penguin payout: " << penguinPayout << std::endl;
+	std::cout << "Turtle payout: " << turtlePayout << std::endl;
+
+	double totalPayout = (tigerPayout + penguinPayout + turtlePayout) + getMoneyInBank();
+
+	setMoneyInBank(totalPayout); 
+	
+}
 
 
 Zoo::~Zoo()

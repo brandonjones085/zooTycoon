@@ -5,7 +5,7 @@
 
 
 
-class Zoo
+class Zoo : public Animal
 {
 private:
 	int days; 
@@ -26,14 +26,20 @@ public:
 	void addTiger(); 
 	int getNumOfTiger(); 
 	void subtractTigerCost(); 
+	void showTigers(); 
 	void addPenguin(); 
 	int getNumOfPenguin(); 
 	void subtractPenguinCost(); 
+	void showPenguins(); 
 	void addTurtle(); 
 	int getNumOfTurtle(); 
 	void subtractTurtleCost(); 
-	
-
+	void showTurtles(); 
+	double getMoneyInBank(); 
+	void setMoneyInBank(int); 
+	void addDay(); 
+	void subtractTotalFoodCost(); 
+	void payoffForDay(); 
 
 
 	~Zoo();

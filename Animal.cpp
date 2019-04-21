@@ -14,16 +14,6 @@ Animal::Animal()
 
 }
 
-Animal::Animal(int a, int c, int nOB, int bFC, int p, int mib)
-{
-	this->age = a;
-	this->cost = c;
-	this->numOfBabies = nOB;
-	this->baseFoodCost = bFC;
-	this->payoff = p;
-}
-	
-
 void Animal::setAge(int age)
 {
 	this->age = age; 

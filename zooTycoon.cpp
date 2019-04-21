@@ -14,32 +14,37 @@ int main()
 	int again = 1;
 
 
-
-	Animal a; 
-	
-
-	
-
-	a.setBaseFoodCost();
-
 	Zoo z; 
 	
 	z.startZoo();
 
+
+	z.setBaseFoodCost(); 
+
 	while (again == 1)
 	{
-		
-
-		std::cout << "Day number: " << days << std::endl; 
-		
 	
 
+		z.showTigers(); 
+		z.showPenguins(); 
+		z.showTurtles(); 
+		
+		
+		std::cout << "Money in Bank: $" << z.getMoneyInBank() << std::endl;
+		std::cout << "Day number: " << days << std::endl; 
+		std::cout << std::endl; 
+	
 
 		//Pause until user presses enter
 		std::cin.clear(); 
 		std::cin.sync(); 
 		std::cin.ignore(); 
+
 		days++;
+		z.addDay(); //Adds a day to the animals in the array
+		z.subtractTotalFoodCost(); 
+		z.payoffForDay(); 
+		
 
 
 		//Asks user if they'd like to continue
