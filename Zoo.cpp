@@ -52,54 +52,57 @@ Asks user to begin by buying three different types of animals. They are able to 
 
 void Zoo::startZoo()
 {
-	
+
 	for (int i = 0; i < 3; i++)
 	{
 
-		int num = 0; 
+		int num = 0;
 		std::cout << "You need to buy three types of animals to start the business ";
 		std::cout << "What would you like to buy for animal number " << i + 1 << std::endl;
-		std::cout << "You have $" << moneyInBank << " left in the bank" << std::endl; 
-		std::cout << "Enter 1 for a tiger \n"; 
-		std::cout << "Enter 2 for a penguin \n"; 
-		std::cout << "Enter 3 for a turtle \n"; 
-		std::cin >> num; 
+		std::cout << "You have $" << moneyInBank << " left in the bank" << std::endl;
+		std::cout << "Enter 1 for a tiger \n";
+		std::cout << "Enter 2 for a penguin \n";
+		std::cout << "Enter 3 for a turtle \n";
+		std::cin >> num;
+		validateAnimal(num);
 
 		if (num == 1)
 		{
-			int choice; 
+			int choice;
 			std::cout << "How many would you like to buy? 1 or 2? \n";
-			std::cin >> choice; 
+			std::cin >> choice;
+			validateint(choice);
 
 			if (choice == 1)
 			{
 				//add a tiger
 				addTiger();//Adds a tiger to array
 				subtractTigerCost(); //Gets cost of tiger and subtracts amount from moneyInBank variable. 
-				
+
 			}
 			else
 			{
 				//add a tiger
 				for (int i = 0; i < choice; i++)//This loops through the number 2 and adds that many tigers, then subtracts cost
 				{
-					addTiger(); 
+					addTiger();
 					subtractTigerCost();
-				
+
 				}
 			}
-				
+
 		}
 		else if (num == 2) // For penguin
 		{
 			int choice;
 			std::cout << "How many would you like to buy? 1 or 2? \n";
 			std::cin >> choice;
+			validateint(choice);
 			if (choice == 1)
 			{
 				addPenguin();//adds one penguin
 				subtractPenguinCost(); //subtracts one penguin cost
-				
+
 			}
 			else
 			{
@@ -108,22 +111,23 @@ void Zoo::startZoo()
 				{
 					addPenguin();
 					subtractPenguinCost();
-					
+
 				}
 			}
 
-		
+
 		}
 		else if (num == 3)//Adds turtle
 		{
 			int choice;
 			std::cout << "How many would you like to buy? 1 or 2? \n";
 			std::cin >> choice;
+			validateint(choice);
 			if (choice == 1)
 			{
 				addTurtle(); //Adds one turtle
 				subtractTurtleCost();//Subtracts one turtle cost
-				
+
 			}
 			else
 			{
@@ -132,15 +136,110 @@ void Zoo::startZoo()
 				{
 					addTurtle();
 					subtractTurtleCost();
-					
+
 				}
 			}
-				
+
 		}
 
 	}
 
 }
+
+
+void Zoo::increaseTigerArray()
+{
+	Tiger *t;
+	int num = getNumOfTiger();//returns the number of tigers
+
+	num = num * 2;
+	t = new Tiger[num];
+
+	//Copies over old array to new array
+	for (int j = 0; j < num; j++)
+	{
+		t[j] = tigerArray[j];
+
+	}
+
+	//Increases the number of tigers by 1
+	numOfTiger++;
+
+	//Deletes old tiger array
+	delete[] tigerArray;
+
+	//Creates new tiger array with new number of tigers
+	tigerArray = new Tiger[num];
+
+	tigerArray[numOfTiger - 1].setAge(3); //Sets the age of the animal to 3 days old
+
+
+	//Copies over age from the original array
+	for (int i = 0; i < numOfTiger - 1; i++)
+	{
+		tigerArray[i].setAge(t[i].getAge());
+	}
+}
+
+
+
+void Zoo::increasePenguinArray()
+{
+	int num = getNumOfPenguin(); 
+
+	num = num * 2; 
+	Penguin *p = new Penguin[num];//Creates a pointer to new penguin array
+
+	//Copies over old array to new array
+	for (int j = 0; j < num; j++)
+	{
+		p[j] = penguinArray[j];
+	}
+
+	numOfPenguin++; //Increases numOfPenguin by 1
+	delete[] penguinArray; //Deletes old array
+
+	//Creates new array with increased number of penguins
+	penguinArray = new Penguin[num];
+
+	penguinArray[numOfPenguin - 1].setAge(3); //Sets the age of the animal to 3 days old
+
+	//Sets the age of the penguins in new array according to original array
+	for (int i = 0; i < numOfPenguin - 1; i++)
+	{
+		penguinArray[i].setAge(p[i].getAge());
+	}
+
+}
+
+void Zoo::increaseTurtleArray()
+{
+	int num = getNumOfTurtle();
+
+	Turtle *t = new Turtle[num]; //Creates pointer to new Turtle array
+
+	//Copies over old array to new array
+	for (int j = 0; j < num; j++)
+	{
+		t[j] = turtleArray[j];
+	}
+
+	numOfTurtle++; //Increases the numOfTurtles by 1
+
+	delete[] turtleArray; //Deletes old turtle array
+
+	//Creates new array with increased number of turtles in array
+	turtleArray = new Turtle[num];
+
+	turtleArray[numOfTurtle - 1].setAge(3); //Sets the age of the animal to 3 days old
+
+	//Copies information over according to original array
+	for (int i = 0; i < numOfTurtle - 1; i++)
+	{
+		turtleArray[i].setAge(t[i].getAge());
+	}
+}
+
 /*******************************************************************************
 ** Description:  Function adds a tiger to the array by creating a new array and copying over old array. 
 //Source: https://www.cs.nmsu.edu/~rth/cs/cs471/C%2B%2BDynamicArray.pdf
@@ -149,36 +248,44 @@ void Zoo::startZoo()
 void Zoo::addTiger()
 {
 
-
 	Tiger *t;
-	int i = getNumOfTiger();//returns the number of tigers
-
-	t = new Tiger[i];  //Pointer to a new tiger object
+	int num = getNumOfTiger();//returns the number of tigers
 
 
-	//Copies over old array to new array
-	for (int j = 0; j < i; j++)
+	if (num % 10 == 0 && num > 5) //if the array needs to double in size
 	{
-		t[j] = tigerArray[j]; 
-			
+		increaseTigerArray(); 
+
 	}
-
-	//Increases the number of tigers by 1
-	numOfTiger++; 
-
-	//Deletes old tiger array
-	delete[] tigerArray; 
-
-	//Creates new tiger array with new number of tigers
-	tigerArray = new Tiger[numOfTiger]; 
-
-
-	//Copies over age from the original array
-	for (int i = 0; i < numOfTiger -1; i++)
+	else
 	{
-		tigerArray[i].setAge(t[i].getAge()); 
-	}
+		t = new Tiger[num];  //Pointer to a new tiger object
 
+
+			//Copies over old array to new array
+		for (int j = 0; j < num; j++)
+		{
+			t[j] = tigerArray[j];
+
+		}
+
+		//Increases the number of tigers by 1
+		numOfTiger++;
+
+		//Deletes old tiger array
+		delete[] tigerArray;
+
+		//Creates new tiger array with new number of tigers
+		tigerArray = new Tiger[numOfTiger];
+
+
+		//Copies over age from the original array
+		for (int i = 0; i < numOfTiger - 1; i++)
+		{
+			tigerArray[i].setAge(t[i].getAge());
+		}
+
+	}
 }
 
 //Returns the number of tigers
@@ -218,25 +325,35 @@ void Zoo::addPenguin()
 {
 	int i = getNumOfPenguin(); //returns the number of penguins
 
-	Penguin *p = new Penguin[i];//Creates a pointer to new penguin array
+	//checks if the array needs to be increased
+	if (i > 5 && i % 10 == 0)
+	{
+		increasePenguinArray(); 
+	}
+	else
+	{
+
+		Penguin *p = new Penguin[i];//Creates a pointer to new penguin array
 
 	//Copies over old array to new array
-	for (int j = 0; j < i; j++)
-	{
-		p[j] = penguinArray[j]; 
-	}
+		for (int j = 0; j < i; j++)
+		{
+			p[j] = penguinArray[j];
+		}
 
-	numOfPenguin++; //Increases numOfPenguin by 1
-	delete[] penguinArray; //Deletes old array
+		numOfPenguin++; //Increases numOfPenguin by 1
+		delete[] penguinArray; //Deletes old array
 
-	//Creates new array with increased number of penguins
-	penguinArray = new Penguin[numOfPenguin]; 
+		//Creates new array with increased number of penguins
+		penguinArray = new Penguin[numOfPenguin];
 
 
-	//Sets the age of the penguins in new array according to original array
-	for (int i = 0; i < numOfPenguin-1; i++)
-	{
-		penguinArray[i].setAge(p[i].getAge());
+		//Sets the age of the penguins in new array according to original array
+		for (int i = 0; i < numOfPenguin - 1; i++)
+		{
+			penguinArray[i].setAge(p[i].getAge());
+		}
+
 	}
 
 }
@@ -278,24 +395,31 @@ void Zoo::addTurtle()
 {
 	int i = getNumOfTurtle(); //returns the number of turtles in array
 
-	Turtle *t = new Turtle[i]; //Creates pointer to new Turtle array
+	if (i > 5 && i % 10 == 0)
+	{
+		increaseTurtleArray(); 
+	}
+	else
+	{
+		Turtle *t = new Turtle[i]; //Creates pointer to new Turtle array
 
 	//Copies over old array to new array
-	for (int j = 0; j < i; j++)
-	{
-		t[j] = turtleArray[j]; 
-	}
+		for (int j = 0; j < i; j++)
+		{
+			t[j] = turtleArray[j];
+		}
 
-	numOfTurtle++; //Increases the numOfTurtles by 1
-	delete[] turtleArray; //Deletes old turtle array
+		numOfTurtle++; //Increases the numOfTurtles by 1
+		delete[] turtleArray; //Deletes old turtle array
 
-	//Creates new array with increased number of turtles in array
-	turtleArray = new Turtle[numOfTurtle]; 
+		//Creates new array with increased number of turtles in array
+		turtleArray = new Turtle[numOfTurtle];
 
-	//Copies information over according to original array
-	for (int i = 0; i < numOfTurtle -1; i++)
-	{
-		turtleArray[i].setAge(t[i].getAge()); 	
+		//Copies information over according to original array
+		for (int i = 0; i < numOfTurtle - 1; i++)
+		{
+			turtleArray[i].setAge(t[i].getAge());
+		}
 	}
 
 }
@@ -417,12 +541,14 @@ void Zoo::buyAnotherAnimal()
 	//Determins the type of animal the user would like to buy
 	std::cout << "Would you like to buy an adult animal? y/n \n"; 
 	std::cin >> choice; 
+	validateChar(choice); 
 	if (choice == 'y')
 	{
 		std::cout << "Enter 1 for a Tiger\n"; 
 		std::cout << "Enter 2 for a Penguin\n";
 		std::cout << "Enter 3 for a Turtle\n"; 
 		std::cin >> animal; 
+		validateAnimal(animal);
 
 		if (animal == 1)//buy a tiger
 		{
@@ -449,26 +575,37 @@ Source: https://www.cs.nmsu.edu/~rth/cs/cs471/C%2B%2BDynamicArray.pdf
 void Zoo::addAdultTiger() 
 {
 	int i = getNumOfTiger();
-	Tiger *t = new Tiger[i];
 
-	for (int j = 0; j < i; j++)
+	//Checks to see if the size needs to be increased
+	if (i > 5 && i % 10 == 0)
 	{
-		t[j] = tigerArray[j];
+		increaseTigerArray(); 
 	}
-
-
-	numOfTiger++;
-	delete[] tigerArray;
-
-
-	tigerArray = new Tiger[numOfTiger];
-
-	tigerArray[numOfTiger - 1].setAge(3); //Sets the age of the animal to 3 days old
-
-	//Copies over information
-	for (int i = 0; i < numOfTiger - 1; i++)
+	else
 	{
-		tigerArray[i].setAge(t[i].getAge());
+
+		Tiger *t = new Tiger[i];
+
+		for (int j = 0; j < i; j++)
+		{
+			t[j] = tigerArray[j];
+		}
+
+
+		numOfTiger++;
+		delete[] tigerArray;
+
+
+		tigerArray = new Tiger[numOfTiger];
+
+		tigerArray[numOfTiger - 1].setAge(3); //Sets the age of the animal to 3 days old
+
+		//Copies over information
+		for (int i = 0; i < numOfTiger - 1; i++)
+		{
+			tigerArray[i].setAge(t[i].getAge());
+		}
+
 	}
 
 }
@@ -482,29 +619,40 @@ Source: https://www.cs.nmsu.edu/~rth/cs/cs471/C%2B%2BDynamicArray.pdf
 void Zoo::addAdultPenguin()
 {
 	int i = getNumOfPenguin();
-	Penguin *p = new Penguin[i];
 
-	for (int j = 0; j < i; j++)
+	if (i > 5 && i % 10 == 0)
 	{
-		p[j] = penguinArray[j];
+		increasePenguinArray(); 
 	}
-
-
-	numOfPenguin++;
-	delete[] penguinArray;
-
-
-	penguinArray = new Penguin[numOfPenguin];
-
-	penguinArray[numOfPenguin - 1].setAge(3); //Sets the age of the animal to 3 days old
-
-
-	//Copies over information
-	for (int i = 0; i < numOfPenguin - 1; i++)
+	else
 	{
-		penguinArray[i].setAge(p[i].getAge());
+
+		Penguin *p = new Penguin[i];
+
+		for (int j = 0; j < i; j++)
+		{
+			p[j] = penguinArray[j];
+		}
+
+
+		numOfPenguin++;
+		delete[] penguinArray;
+
+
+		penguinArray = new Penguin[numOfPenguin];
+
+		penguinArray[numOfPenguin - 1].setAge(3); //Sets the age of the animal to 3 days old
+
+
+		//Copies over information
+		for (int i = 0; i < numOfPenguin - 1; i++)
+		{
+			penguinArray[i].setAge(p[i].getAge());
+
+		}
 
 	}
+	
 }
 
 
@@ -517,28 +665,40 @@ Source: https://www.cs.nmsu.edu/~rth/cs/cs471/C%2B%2BDynamicArray.pdf
 void Zoo::addAdultTurtle()
 {
 	int i = getNumOfTurtle();
-	Turtle *t = new Turtle[i];
 
-	for (int j = 0; j < i; j++)
+	if (i > 5 && i % 10 == 0)
 	{
-		t[j] = turtleArray[j];
+		increaseTurtleArray(); 
+	}
+	else
+	{
+
+		Turtle *t = new Turtle[i];
+
+		for (int j = 0; j < i; j++)
+		{
+			t[j] = turtleArray[j];
+		}
+
+
+		numOfTurtle++;
+		delete[] turtleArray;
+
+
+		turtleArray = new Turtle[numOfTurtle];
+
+		turtleArray[numOfTurtle - 1].setAge(3); //Sets the age of the animal to 3 days old
+
+		//Copies over information
+		for (int i = 0; i < numOfTurtle - 1; i++)
+		{
+			turtleArray[i].setAge(t[i].getAge());
+
+		}
+
+
 	}
 
-
-	numOfTurtle++;
-	delete[] turtleArray;
-
-
-	turtleArray = new Turtle[numOfTurtle];
-
-	turtleArray[numOfTurtle -1].setAge(3); //Sets the age of the animal to 3 days old
-	
-	//Copies over information
-	for (int i = 0; i < numOfTurtle - 1; i++)
-	{
-		turtleArray[i].setAge(t[i].getAge());
-		
-	}
 
 }
 
@@ -627,17 +787,40 @@ void Zoo::animalSickness()
 	if (num == 1)
 	{
 	std::cout << "\nRemove a tiger\n"; 
-	removeTiger(); 
+	if (numOfTiger > 1)
+	{
+		removeTiger();
+	}
+	else
+	{
+		num = std::rand() % 3 + 1;
+	}
+	
 	}
 	else if (num == 2)
 	{
 		std::cout << "\nRemove a penguin\n";
-		removePenguin(); 
+		if (numOfPenguin > 1)
+		{
+			removePenguin();
+		}
+		else
+		{
+			num = std::rand() % 3 + 1;
+		}
+		
 	}
 	else if (num == 3)
 	{
 		std::cout << "\nRemove a turtle\n"; 
-		removeTurtle(); 
+		if (numOfTurtle > 1)
+		{
+			removeTurtle();
+		}
+		else
+		{
+			num = std::rand() % 3 + 1;
+		}
 	}
 
 }
@@ -773,6 +956,51 @@ void Zoo::removeTurtle()
 
 	std::cout << "\nYou now have " << getNumOfTurtle() << " turtles in the zoo\n";
 }
+
+/*******************************************************************************
+** Description:  Validation functions for user input
+*******************************************************************************/
+
+//Validation for char
+void Zoo::validateChar(char &i)
+{
+	i = tolower(i); 
+
+	while (i != 'y' && i != 'n') {
+		std::cout << "Invalid input! Try again: ";
+		std::cin >> i;
+		i = tolower(i);
+	}
+
+}
+
+//Validation of 1 or 2
+void Zoo::validateint(int &i)
+{
+	while (!std::cin || (i != 1 && i != 2))
+	{
+		std::cin.clear();
+		std::cin.sync();
+		//std::cin.ignore();
+		std::cout << "\nInvalid input! Try again: ";
+		std::cin >> i;
+	}
+}
+
+//validation for animal choice
+void Zoo::validateAnimal(int &i)
+{
+	while (!std::cin || (i != 1 && i != 2 && i !=3))
+	{
+		std::cin.clear();
+		std::cin.sync();
+		//std::cin.ignore();
+		std::cout << "\nInvalid input! Try again: ";
+		std::cin >> i;
+	}
+}
+
+
 
 //Deletes all arrays
 Zoo::~Zoo()

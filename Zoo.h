@@ -61,8 +61,13 @@ public:
 	void removeTiger(); 
 	void removeTurtle(); 
 	void removePenguin(); 
-
-
+	void increaseTigerArray(); 
+	void increaseTurtleArray(); 
+	void increasePenguinArray(); 
+	void validateint(int&); 
+	void validateChar(char &); 
+	void validateAnimal(int&);
+	
 
 	~Zoo();
 };

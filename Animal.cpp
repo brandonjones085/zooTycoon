@@ -8,7 +8,7 @@
 #include <iostream>
 
 
-
+//Constructor
 Animal::Animal()
 {
 	this->age = 1; 
@@ -17,29 +17,33 @@ Animal::Animal()
 	this->baseFoodCost = 0; 
 	this->payoff = 0; 
 	
-
 }
 
+//Sets animal age
 void Animal::setAge(int age)
 {
 	this->age = age; 
 }
 
+//Returns animal age
 int Animal::getAge()
 {
 	return age; 
 }
 
+//Sets the cost for the animal
 void Animal::setCost(int cost)
 {
 	this->cost = cost; 
 }
 
+//Returns the cost
 int Animal::getCost()
 {
 	return cost; 
 }
 
+//sets the number of babies animal
 void Animal::setNumOfBabies(int babies)
 {
 	this->numOfBabies = babies; 
@@ -50,6 +54,7 @@ int Animal::getNumOfBabies()
 	return numOfBabies; 
 }
 
+//Sets the payoff for animal
 void Animal::setPayoff(int payoff)
 {
 	this->payoff = payoff; 
@@ -65,6 +70,8 @@ void Animal::setBaseFoodCost()
 {
 	std::cout << "What would you like the base food cost to be? "; 
 	std::cin >> baseFoodCost; 
+
+	validateBase(baseFoodCost); 
 }
 
 double Animal::getBaseFoodCost()
@@ -73,6 +80,18 @@ double Animal::getBaseFoodCost()
 }
 
 
+//Validation for base food cost
+void Animal::validateBase(int &i)
+{
+	while (!std::cin || (i < 1 && i > 200))
+	{
+		std::cin.clear();
+		std::cin.sync();
+		//std::cin.ignore();
+		std::cout << "\nInvalid input! Try again: ";
+		std::cin >> i;
+	}
+}
 
 
 Animal::~Animal()

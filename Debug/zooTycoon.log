@@ -1,1 +1,4 @@
-﻿  zooTycoon.vcxproj -> C:\Users\brand\Desktop\files\OSU\cs162\zooTycoon\zooTycoon\Debug\zooTycoon.exe
+﻿  Zoo.cpp
+c:\users\brand\desktop\files\osu\cs162\zootycoon\zootycoon\zootycoon\zoo.cpp(718): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+c:\users\brand\desktop\files\osu\cs162\zootycoon\zootycoon\zootycoon\zoo.cpp(763): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  zooTycoon.vcxproj -> C:\Users\brand\Desktop\files\OSU\cs162\zooTycoon\zooTycoon\Debug\zooTycoon.exe

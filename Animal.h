@@ -33,6 +33,7 @@ public:
 	double getPayoff(); 
 	void setBaseFoodCost(); 
 	double getBaseFoodCost(); 
+	void validateBase(int&);
  
 	void isAdult(int); 
 
