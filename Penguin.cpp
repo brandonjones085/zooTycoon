@@ -18,7 +18,7 @@ Penguin::Penguin()
 	this->payoff = 0.1;
 }
 
-
+//Finds the food cost for the penguins
 double Penguin::penguinFoodCost()
 {
 	double base = getBaseFoodCost();

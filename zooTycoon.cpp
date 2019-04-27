@@ -1,3 +1,10 @@
+/*******************************************************************************
+** Author:       Brandon Jones
+** Date:         04/21/2019
+** Description:  This main file for the zoo tycoon program
+*******************************************************************************/
+
+
 
 #include "Animal.h"
 #include "Tiger.h"
@@ -44,6 +51,10 @@ int main()
 		z.addDay(); //Adds a day to the animals in the array
 		z.subtractTotalFoodCost(); 
 		z.payoffForDay(); 
+
+
+
+		z.randEvent(); 
 		
 		z.buyAnotherAnimal(); 
 

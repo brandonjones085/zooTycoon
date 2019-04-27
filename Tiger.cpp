@@ -15,6 +15,7 @@ Tiger::Tiger()
 	this->payoff = 0.2; 
 }
 
+//Finds the food cost for the tigers
 double Tiger::tigerBaseFoodCost()
 {
 	double base = getBaseFoodCost(); 

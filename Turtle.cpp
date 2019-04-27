@@ -17,7 +17,7 @@ Turtle::Turtle()
 }
 
 
-
+//Finds the food cost for the turtles
 double Turtle::turtleFoodCost()
 {
 	double base = getBaseFoodCost();

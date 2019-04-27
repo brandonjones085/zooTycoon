@@ -55,6 +55,14 @@ public:
 	void addAdultTiger(); 
 	void addAdultPenguin(); 
 	void randEvent(); 
+	void animalSickness(); 
+	void attendanceBoom(); 
+	void babyBorn(); 
+	void removeTiger(); 
+	void removeTurtle(); 
+	void removePenguin(); 
+
+
 
 	~Zoo();
 };
