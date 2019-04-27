@@ -1,6 +1,11 @@
+/*******************************************************************************
+** Author:       Brandon Jones
+** Date:         04/21/2019
+** Description:  This is the ant class for the langstons ant program
+*******************************************************************************/
+
+
 #include "Turtle.h"
-
-
 
 Turtle::Turtle()
 {

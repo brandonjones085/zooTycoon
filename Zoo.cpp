@@ -1,3 +1,10 @@
+/*******************************************************************************
+** Author:       Brandon Jones
+** Date:         04/21/2019
+** Description:  This is the ant class for the langstons ant program
+*******************************************************************************/
+
+
 #include "Zoo.h"
 #include "Penguin.h"
 #include "Tiger.h"
@@ -5,7 +12,8 @@
 #include "Animal.h"
 
 #include <iostream>
-
+#include <ctime>
+#include <cstdlib>
 
 Zoo::Zoo()
 {
@@ -122,7 +130,7 @@ void Zoo::startZoo()
 
 }
 
-
+//https://www.cs.nmsu.edu/~rth/cs/cs471/C%2B%2BDynamicArray.pdf
 void Zoo::addTiger()
 {
 
@@ -348,11 +356,11 @@ void Zoo::buyAnotherAnimal()
 
 		if (animal == 1)//buy a tiger
 		{
-			//addAdultTiger(); 
+			addAdultTiger(); 
 		}
 		else if (animal == 2)//buy a penguin
 		{
-			//addAdultPenguin(); 
+			addAdultPenguin(); 
 		}
 		else if (animal == 3)//but a turtle
 		{
@@ -367,7 +375,6 @@ void Zoo::buyAnotherAnimal()
 
 void Zoo::addAdultTiger() 
 {
-
 	int i = getNumOfTiger();
 	Tiger *t = new Tiger[i];
 
@@ -448,6 +455,35 @@ void Zoo::addAdultTurtle()
 	}
 
 }
+
+
+
+void Zoo::randEvent()
+{
+
+	std::cout << "\n\nPress Enter for the random event to occur\n"; 
+
+
+	srand(time(NULL));
+	int num = std::rand() % 3 + 1; 
+
+
+	if (num == 1)
+	{
+		std::cout << "Sickness occurs to an animal in the zoo"; 
+	}
+	else if(num == 2)
+	{
+		std::cout << "boom in zoo attendance occurs"
+	}
+	else if (num == 3)
+	{
+		std::cout << "a baby animal is born"; 
+	}
+
+
+}
+
 
 
 Zoo::~Zoo()

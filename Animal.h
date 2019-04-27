@@ -1,3 +1,12 @@
+/*******************************************************************************
+** Author:       Brandon Jones
+** Date:         04/21/2019
+** Description:  This is the header file for the animal class
+*******************************************************************************/
+
+#ifndef ANIMAL_HPP
+#define ANIMAL_HPP
+
 #pragma once
 class Animal
 {
@@ -30,4 +39,8 @@ public:
 
 	~Animal();
 };
+
+#endif
+
+
 

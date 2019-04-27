@@ -1,4 +1,14 @@
+/*******************************************************************************
+** Author:       Brandon Jones
+** Date:         04/21/2019
+** Description:  This is the ant class for the langstons ant program
+*******************************************************************************/
+
+
 #pragma once
+#ifndef ZOO_HPP
+#define ZOO_HPP
+
 #include "Penguin.h"
 #include "Tiger.h"
 #include "Turtle.h"
@@ -44,7 +54,10 @@ public:
 	void addAdultTurtle(); 
 	void addAdultTiger(); 
 	void addAdultPenguin(); 
+	void randEvent(); 
 
 	~Zoo();
 };
+
+#endif
 
